@@ -1,0 +1,25 @@
+@(title: String)(headers: Html = Html(""))(content: Html)(footers: Html = Html(""))
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Próximo - @title</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="@routes.Assets.at("vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" media="screen">
+		
+		<!--[if lt IE 9]>
+			<script src="@routes.Assets.at("vendor/html5shiv/html5shiv.js")"></script>
+			<script src="@routes.Assets.at("vendor/respond/respond.min.js")"></script>
+		<![endif]-->
+		@headers
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet" media="screen">
+	</head>
+	<body>
+@content
+		<script src="@routes.Assets.at("vendor/jquery/jquery-1.9.0.min.js")"></script>
+		<script src="@routes.Assets.at("vendor/bootstrap/js/bootstrap.min.js")"></script>
+@footers
+	</body>
+</html>

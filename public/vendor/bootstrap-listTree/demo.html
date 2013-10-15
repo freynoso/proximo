@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery/Bootstrap List Tree Plugin Demo</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap-listTree.css" type="text/css">
+</head>
+<body>
+
+<div id="content">
+    <div class="listTree"></div>
+    <button class="btn btn-success">Check All</button>
+    <button class="btn btn-danger">Un-Check All</button>
+    <button class="btn btn-info">Expand All</button>
+    <button class="btn btn-warning">Collapse All</button>
+    <button class="btn btn-inverse">Change Data</button>
+
+    <br /><br />
+    
+    <h4>Selection JSON:</h4>
+    <pre id="selectionJson"></pre>
+    <button class="btn btn-primary">Get JSON for selected nodes</button>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap-listTree.js"></script>
+<script type="text/javascript">
+// Create our data objects.
+// Formatted like d3.js's nest() function.
+var data = [
+    {
+        "key": "Parent 1",
+        "values": [
+            { "key": "Parent 1 Child 1" },
+            { "key": "Parent 1 Child 2" },
+            { "key": "Parent 1 Child 3" },
+            { "key": "Parent 1 Child 4" },
+            { "key": "Parent 1 Child 5" }
+        ]
+    },
+    {
+        "key": "Parent 2",
+        "values": [
+            { "key": "Parent 2 Child 1" },
+            { "key": "Parent 2 Child 2" },
+            { "key": "Parent 2 Child 3" }
+        ]
+    },
+    {
+        "key": "Parent 3",
+        "values": [
+            { "key": "Parent 3 Child 1" },
+            { "key": "Parent 3 Child 2" },
+            { "key": "Parent 3 Child 3" }
+        ]
+    }
+];
+
+var dataDefaultSelected = [
+    {
+        "key": "Parent 1",
+        "values": [
+            { "key": "Parent 1 Child 1" },
+            { "key": "Parent 1 Child 2" }, // Skip a few...
+            { "key": "Parent 1 Child 5" }
+        ]
+    },
+    {
+        "key": "Parent 3",
+        "values": [] //Some bad data, you can't have a selected parent with no selected children!
+    }
+];
+
+var otherData = [
+    {
+        "key": "Cat",
+        "values": [
+            { "key": "Domestic Shorthair" },
+            { "key": "Scottish Fold" },
+            { "key": "Siberian" }
+        ]
+    },
+    {
+        "key": "Dog",
+        "values": [
+            { "key": "German Shepherd" },
+            { "key": "Minature Pinscher" },
+            { "key": "Corgie" }
+        ]
+    }
+];
+
+$(document).on('click', '.btn-success', function(e) {
+    $('.listTree').listTree('selectAll');
+}).on('click', '.btn-danger', function(e) {
+    $('.listTree').listTree('deselectAll');
+}).on('click', '.btn-info', function(e) {
+    $('.listTree').listTree('expandAll');
+}).on('click', '.btn-warning', function(e) {
+    $('.listTree').listTree('collapseAll');
+}).on('click', '.btn-inverse', function(e) {
+    $('.listTree').listTree('update', otherData);
+}).on('click', '.btn-primary', function(e) {
+    $('#selectionJson').text(JSON.stringify($('.listTree').data('listTree').selected));
+});
+
+$('.listTree').listTree(data, { "startCollapsed": true, "selected": dataDefaultSelected });​
+</script>
+
+</body>
+</html>

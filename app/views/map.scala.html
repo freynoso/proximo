@@ -1,0 +1,45 @@
+@main("Map"){
+		<link href="@routes.Assets.at("vendor/bootstrap-listTree/bootstrap-listTree.css")" rel="stylesheet" media="screen">
+		<link href="@routes.Assets.at("vendor/leaflet/leaflet.css")" rel="stylesheet" media="screen">
+		<!--[if lte IE 8]>
+			<link href="@routes.Assets.at("vendor/leaflet/leaflet.ie.css")" rel="stylesheet">
+		<![endif]-->		
+}{
+		<div class="row">
+			<div class="navbar navbar-default" id="row-navbar">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Próximo</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Map</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row noMargin" id="row-map">
+			<div class="col-md-2 noPadding noMargin">
+			    <div class="listTree"></div>
+			</div>
+			<div class="col-md-10 noPadding noMargin">
+			    <div class="map-canvas" id="map"></div>
+			</div>
+		</div>
+
+}{
+		<script src="@routes.Assets.at("vendor/underscore/underscore-min.js")"></script>
+		<script src="@routes.Assets.at("vendor/bootstrap-listTree/bootstrap-listTree.js")"></script>
+		<script src="@routes.Assets.at("vendor/leaflet/leaflet.js")"></script>
+		<script src="@routes.Assets.at("javascripts/devices.js")"></script>	
+		<script src="@routes.Assets.at("javascripts/maps.js")"></script>	
+		
+}
+

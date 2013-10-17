@@ -1,0 +1,31 @@
+# Devices
+devices:
+    - !!models.Device
+        id:         1
+        uniqueId:   1234
+        name:       Test 1234
+    - !!models.Device
+        id:         2
+        uniqueId:   5678
+        name:       Test 5678
+
+# Users
+users:
+    - !!models.User
+        id:         1
+        login:      admin
+        password:   admin    
+    - !!models.User
+        id:         2
+        login:      demo
+        password:   demo
+        
+        
+# Users *--* Devices
+usersDevices:
+    - !!java.util.Map
+        userId:     1 
+        devicesIds:    [1 , 2]
+    - !!java.util.Map
+        userId:     2
+        devicesIds:    [2]        

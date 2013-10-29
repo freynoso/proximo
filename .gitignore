@@ -16,3 +16,4 @@ proyecto.txt
 RUNNING_PID
 mem.h2.db
 mem.trace.db
+.gitignore

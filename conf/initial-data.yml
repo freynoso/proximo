@@ -2,12 +2,12 @@
 devices:
     - !!models.Device
         id:         1
-        uniqueId:   1234
-        name:       Test 1234
+        uniqueId:   123456789012345
+        name:       Test 123456789012345
     - !!models.Device
         id:         2
-        uniqueId:   5678
-        name:       Test 5678
+        uniqueId:   999999999999999
+        name:       Test 999999999999999
 
 # Users
 users:

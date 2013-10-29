@@ -26,8 +26,9 @@ public class MapEventSource extends UntypedActor {
 
 		// Handle connections
 		if (message instanceof Position) {
-			Logger.info("Messaje Postion recived.");
 			final Position position = (Position) message;
+			Logger.info("Messaje Postion recived."
+					+ Json.toJson(position).toString());
 			notifyPosition(position);
 
 		} else if (message instanceof Listener) {
@@ -86,15 +87,19 @@ public class MapEventSource extends UntypedActor {
 
 	private void notifyPosition(Position position) {
 		Long deviceID = position.getDeviceId();
-		if (deviceListeners.containsKey(deviceID)) {
-			Logger.info("Notify " + Json.toJson(position).toString());
-			for (EventSource es : deviceListeners.get(deviceID)) {
-				Logger.info(Json.stringify(Json.toJson(position)));
-				es.sendDataByName(Long.toString(deviceID),
-						Json.stringify(Json.toJson(position)));
+		if (deviceID != null) {
+			if (deviceListeners.containsKey(deviceID)) {
+				for (EventSource es : deviceListeners.get(deviceID)) {
+					Logger.info(Json.stringify(Json.toJson(position)));
+					es.sendDataByName(Long.toString(deviceID),
+							Json.stringify(Json.toJson(position)));
+				}
+			} else {
+				Logger.info("No listener to device "
+						+ position.getDeviceId().toString());
 			}
 		} else {
-			Logger.info("No listener to device " + position.getDeviceId());
+			Logger.info("Position with null device.");
 		}
 	}
 

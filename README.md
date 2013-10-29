@@ -84,7 +84,7 @@ User/pass: admin/admin -or- demo/demo.
 
 GPS device simulator
 -------------------
-#### Install gpsbable
+#### Install gpsbabel
 ```sh
 sudo apt-get install gpsbabel
 ```
